@@ -1,0 +1,29 @@
+# dependencies
+/node_modules
+
+# build output
+/build
+
+# local environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# log files
+*.log
+
+# IDE-specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs_analysis.dat
+*.ncb
+*.swp
+*.swo
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
