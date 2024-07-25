@@ -1,18 +1,16 @@
-# Dockerfile for Frontend
-# Usa una imagen base de Node.js 22
+# Usa una imagen base de Node.js
 FROM node:22
 
-# Establece el directorio de trabajo en el contenedor
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de configuración de npm y instala las dependencias
+# Copia los archivos del proyecto
 COPY package*.json ./
 RUN npm install
 
-# Copia todos los archivos del proyecto al contenedor
 COPY . .
 
-# Expone el puerto en el que la aplicación estará disponible
+# Expon el puerto en el que la app se ejecuta
 EXPOSE 3000
 
 # Comando para iniciar la aplicación
