@@ -11,21 +11,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: List files in workspace (debugging)
-        run: ls -al
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
       - name: Install dependencies
         run: npm ci
-
-      - name: List files in root directory (debugging)
-        run: ls -al
 
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:latest -f Dockerfile .
