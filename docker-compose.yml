@@ -1,10 +1,12 @@
 services:
   frontend:
+    # Construye la imagen desde el Dockerfile en el contexto actual
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     ports:
       - "3000:3000"
+    # Configura el healthcheck para asegurar que el servicio esté listo antes de ejecutar pruebas
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 10s

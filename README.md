@@ -1,13 +1,13 @@
-# Frontend QA Automation
+# Front-End Application
 
-Este repositorio contiene la aplicación frontend para el proyecto de QA Automation. La aplicación está construida con React y está configurada para funcionar con Docker. Este README proporciona instrucciones para configurar y ejecutar la aplicación en un entorno local.
+Este repositorio contiene la aplicación front-end construida con Node.js. Este README proporciona instrucciones para construir y ejecutar la aplicación en un entorno local usando Docker y Docker Compose.
 
 ## Estructura del Repositorio
 
-- **Dockerfile**: Contiene las instrucciones para construir la imagen Docker de la aplicación frontend.
-- **docker-compose.yml**: Configuración de Docker Compose para levantar los servicios de frontend.
-- **src/**: Código fuente de la aplicación React.
-- **public/**: Archivos públicos y estáticos.
+- **Dockerfile**: Contiene las instrucciones para construir la imagen Docker del front-end.
+- **docker-compose.yml**: Configuración de Docker Compose para ejecutar el contenedor del front-end.
+- **package.json**: Contiene las dependencias del proyecto.
+- **.github/workflows/build.yml**: Configuración del workflow de GitHub Actions para construir y subir la imagen Docker.
 
 ## Requisitos
 
@@ -23,32 +23,47 @@ Este repositorio contiene la aplicación frontend para el proyecto de QA Automat
     cd frontend-qa-automation
     ```
 
-2. **Construye y levanta los contenedores:**
+2. **Construye la imagen Docker:**
 
     ```bash
-    docker-compose -f docker-compose.yml up -d
+    docker-compose build frontend
     ```
 
-3. **Accede a la aplicación:**
+3. **Levanta el contenedor:**
 
-    La aplicación frontend estará disponible en `http://localhost:3000`.
+    ```bash
+    docker-compose up -d
+    ```
 
-4. **Para detener los contenedores:**
+4. **Accede a la aplicación en el navegador:**
+
+    La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
+
+5. **Para detener el contenedor:**
 
     ```bash
     docker-compose down
     ```
 
-## Desarrollo
+## Configuración
 
-Si necesitas realizar cambios en el código, sigue estos pasos:
+El archivo `Dockerfile` define la imagen Docker para el front-end:
 
-1. **Realiza cambios en el directorio `src/`.**
-2. **Reconstruye la imagen Docker y reinicia los contenedores:**
+- **Imagen base**: Node.js 22.
+- **Directorio de trabajo**: `/app`.
+- **Puerto expuesto**: 3000.
+- **Comando de inicio**: `npm start`.
 
-    ```bash
-    docker-compose -f docker-compose.yml up -d --build
-    ```
+El archivo `docker-compose.yml` configura el servicio del front-end y define un `healthcheck` para asegurar que el servicio esté completamente disponible.
+
+## GitHub Actions
+
+El workflow en GitHub Actions realiza las siguientes tareas:
+
+1. **Construye la imagen Docker** cuando se realiza un push a la rama `main`.
+2. **Publica la imagen en Docker Hub** usando las credenciales configuradas en los secrets.
+
+Para más detalles, consulta `.github/workflows/build.yml`.
 
 ## Contribuciones
 
