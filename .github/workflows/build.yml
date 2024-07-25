@@ -11,15 +11,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Actualizado a v3
+        uses: actions/checkout@v4  # Actualizado a v3
 
       - name: List files in workspace (debugging)
         run: ls -al
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Actualizado a v3
+        uses: actions/setup-node@v4  # Actualizado a v3
         with:
-          node-version: '18'  # Asegúrate de que esta versión sea compatible con tu aplicación
+          node-version: '22'  # Asegúrate de que esta versión sea compatible con tu aplicación
 
       - name: Install dependencies
         run: npm ci
