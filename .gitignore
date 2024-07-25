@@ -20,7 +20,3 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
-
-# Docker-related files
-docker-compose.yml
-Dockerfile

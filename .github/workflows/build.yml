@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: List files in workspace (debugging)
+        run: ls -al
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -21,8 +24,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: List files in root directory (debugging)
+        run: ls -al
+
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend -f Dockerfile .
 
       - name: Log in to DockerHub
         uses: docker/login-action@v2
@@ -31,4 +37,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/frontend:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/frontend
