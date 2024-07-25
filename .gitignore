@@ -1,29 +1,15 @@
-# Node.js
+# Ignorar dependencias y archivos generados
 node_modules/
-package-lock.json
+npm-debug.log
+yarn-error.log
 
-# Logs
+# Ignorar logs y archivos temporales
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*.pid
+*.pid.lock
 
-# Docker
-*.dockerfile
-docker-compose.override.yml
-
-# Environment files
-.env
-
-# Build outputs
-build/
-dist/
-out/
-
-# IDEs and editors
-.vscode/
-.idea/
-
-# OS-specific files
+# Ignorar archivos específicos del sistema y del IDE
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
