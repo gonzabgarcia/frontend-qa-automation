@@ -2,9 +2,9 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: Dockerfile  # Asegúrate de que el nombre coincida con el archivo Dockerfile
+      dockerfile: dockerfile  # Asegúrate de que el nombre coincida con el archivo Dockerfile
     ports:
-      - "3001:3000"
+      - "3000:3000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 10s
